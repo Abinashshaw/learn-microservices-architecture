@@ -38,12 +38,12 @@ public class HotelServiceImpl implements HotelService {
     }
 
     @Override
-    public void updateHotel(Hotel hotel, String hotelId) {
+    public Hotel updateHotel(Hotel hotel, String hotelId) {
         Hotel savedHotel = getHotelByHotelId(hotelId);
         if(hotel.getAbout() != null) savedHotel.setAbout(hotel.getAbout());
         if(hotel.getName() != null) savedHotel.setName(hotel.getName());
         if(hotel.getLocation() != null) savedHotel.setLocation(hotel.getLocation());
-        hotelRepository.save(hotel);
+        return hotelRepository.save(hotel);
     }
 
     @Override

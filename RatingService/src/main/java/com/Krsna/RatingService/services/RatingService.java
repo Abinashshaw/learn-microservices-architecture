@@ -11,7 +11,7 @@ public interface RatingService {
     public Rating saveRating(Rating rating);
     public Rating getRatingByRatingId(String ratingId);
     public void deleteRating(String ratingId);
-    public void updateRating(Rating rating, String ratingId);
+    public Rating updateRating(Rating rating, String ratingId);
     public List<Rating> getRatingByUserId(String userId);
     public List<Rating> getRatingByHotelId(String hotelId);
 

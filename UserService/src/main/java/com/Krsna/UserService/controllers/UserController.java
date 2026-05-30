@@ -3,6 +3,7 @@ package com.Krsna.UserService.controllers;
 import com.Krsna.UserService.entities.User;
 import com.Krsna.UserService.services.UserService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -15,37 +16,38 @@ public class UserController {
     private final UserService userService;
 
     @PostMapping
-    public User saveUser(@RequestBody User user) {
-        return userService.saveUser(user);
+    public ResponseEntity<User> saveUser(@RequestBody User user) {
+        return ResponseEntity.ok(userService.saveUser(user));
     }
 
     @GetMapping
-    public List<User> getAllUser() {
-        return userService.getAllUser();
+    public ResponseEntity<List<User>> getAllUser() {
+        return ResponseEntity.ok(userService.getAllUser());
     }
 
     @GetMapping("/{userId}")
-    public User getUser(@PathVariable String userId) {
-        return userService.getUser(userId);
+    public ResponseEntity<User> getUser(@PathVariable String userId) {
+        return ResponseEntity.ok(userService.getUser(userId));
     }
 
     @DeleteMapping("/{userId}")
-    public void deleteUser(@PathVariable String userId) {
+    public ResponseEntity<String> deleteUser(@PathVariable String userId) {
         userService.deleteUser(userId);
+        return ResponseEntity.ok("User deleted with id " + userId);
     }
 
     @PutMapping("/{userId}")
-    public void updateUser(@PathVariable String userId, @RequestBody User user) {
-        userService.updateUser(user, userId);
+    public ResponseEntity<User> updateUser(@PathVariable String userId, @RequestBody User user) {
+        return ResponseEntity.ok(userService.updateUser(user, userId));
     }
 
     @GetMapping("/email/{email}")
-    public User findByEmail(@PathVariable String email) {
-        return userService.findByEmail(email);
+    public ResponseEntity<User> findByEmail(@PathVariable String email) {
+        return ResponseEntity.ok(userService.findByEmail(email));
     }
 
     @GetMapping("/name/{name}")
-    public List<User> findByNameContaining(@PathVariable String name) {
-        return userService.findByNameContaining(name);
+    public ResponseEntity<List<User>> findByNameContaining(@PathVariable String name) {
+        return ResponseEntity.ok(userService.findByNameContaining(name));
     }
 }

@@ -43,11 +43,11 @@ public class RatingServiceImpl implements RatingService {
     }
 
     @Override
-    public void updateRating(Rating rating, String ratingId) {
+    public Rating updateRating(Rating rating, String ratingId) {
         Rating savedRating = getRatingByRatingId(ratingId);
         if(rating.getRatings() != null) savedRating.setRatings(rating.getRatings());
         if(rating.getFeedback() != null) savedRating.setFeedback(rating.getFeedback());
-        ratingRepository.save(savedRating);
+        return ratingRepository.save(savedRating);
     }
 
     @Override

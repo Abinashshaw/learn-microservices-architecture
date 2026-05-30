@@ -13,13 +13,11 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpMethod;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-import java.util.UUID;
+import java.util.*;
 import java.util.stream.Collectors;
 
 import static java.util.stream.Collectors.toList;
@@ -59,22 +57,37 @@ public class UserServiceImpl implements UserService {
     }
 
 
-    public ArrayList<Rating> getRatingsByUserId(String userId) {
-        ArrayList<Rating> ratings = restTemplate.getForObject("http://localhost:9092/ratings/user/"+userId, ArrayList.class);
+    public List<Rating> getRatingsByUserId(String userId) {
+//        ArrayList<Rating> ratings = restTemplate.getForObject("http://localhost:9092/ratings/user/"+userId, ArrayList.class);
+//        ratings = objectMapper.convertValue(ratings, new TypeReference<ArrayList<Rating>>(){});
 //        restTemplate.exchange("http://localhost:9092/ratings/user/"+userId, HttpMethod.GET, null, new ParameterizedTypeReference<Rating>(){});
 //        Rating[] ratings = restTemplate.getForObject("http://localhost:9092/ratings/user/"+userId, Rating[].class);
-        ratings = objectMapper.convertValue(ratings, new TypeReference<ArrayList<Rating>>(){});
+
 //        ratings.stream().map(rating -> {
 //            rating.setHotel(getHotelByHotelId(rating.getHotelId())); return rating;
 //        }).toList();
 //        log.info("Ratings found with user id: {} is {}", userId, ratings);
+
+//        Rating[] ratings = restTemplate.getForObject("http://localhost:9092/ratings/user/" + userId, Rating[].class);
+
+//        ResponseEntity<ArrayList> response = restTemplate.getForEntity("http://localhost:9092/ratings/user/" + userId, ArrayList.class);
+        ResponseEntity<ArrayList> response = restTemplate.getForEntity("http://RATING-SERVICE/ratings/user/" + userId, ArrayList.class);
+        ArrayList<Rating> ratings = new ArrayList<>();
+        if(response.getStatusCode().is2xxSuccessful()){
+            log.info("Ratings found with user id: {} is {}", userId, response);
+            ratings = objectMapper.convertValue(response.getBody(), new TypeReference<ArrayList<Rating>>(){});
+        }
+
         return ratings;
     }
 
     public Hotel getHotelByHotelId(String hotelId) {
-        Hotel hotel = restTemplate.getForObject("http://localhost:9093/hotels/"+hotelId, Hotel.class);
-//        log.info("Hotel found with id: {} is {}", hotelId, hotel);
-        return hotel;
+//        ResponseEntity<Hotel> response = restTemplate.getForEntity("http://localhost:9093/hotels/"+hotelId, Hotel.class);
+        ResponseEntity<Hotel> response = restTemplate.getForEntity("http://HOTEL-SERVICE/hotels/"+hotelId, Hotel.class);
+        if (response.getStatusCode().is2xxSuccessful()){
+            log.info("Hotel found with id: {} is {}", hotelId, response);
+        }
+        return response.getBody();
     }
 
     @Override
@@ -92,12 +105,12 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void updateUser(User user, String userId) {
+    public User updateUser(User user, String userId) {
         User savedUser = getUser(userId);
         if(user.getName() != null) {
             savedUser.setName(user.getName());
         }
-        userRepository.save(user);
+        return userRepository.save(user);
     }
 
     @Override

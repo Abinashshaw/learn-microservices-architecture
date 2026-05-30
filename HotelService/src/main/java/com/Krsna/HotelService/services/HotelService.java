@@ -14,7 +14,7 @@ public interface HotelService {
 
     void deleteHotel(String hotelId);
 
-    void updateHotel(Hotel hotel, String hotelId);
+    Hotel updateHotel(Hotel hotel, String hotelId);
 
     List<Hotel> findByNameContaining(String name);
 }
