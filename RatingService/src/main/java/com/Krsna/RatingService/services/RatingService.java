@@ -12,7 +12,7 @@ public interface RatingService {
     public Rating getRatingByRatingId(String ratingId);
     public void deleteRating(String ratingId);
     public Rating updateRating(Rating rating, String ratingId);
-    public List<Rating> getRatingByUserId(String userId);
+    public List<Rating> getRatingsByUserId(String userId);
     public List<Rating> getRatingByHotelId(String hotelId);
 
 }
