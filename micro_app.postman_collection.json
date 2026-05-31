@@ -1,0 +1,405 @@
+{
+  "info": {
+    "_postman_id": "e2df0f06-86cf-487d-8223-b67a8b8d5ce5",
+    "name": "micro_app",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "50749174",
+    "_collection_link": "https://go.postman.co/collection/50749174-e2df0f06-86cf-487d-8223-b67a8b8d5ce5?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "hotels",
+      "item": [
+        {
+          "name": "getHotels",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "localhost:9093/hotels",
+              "host": [
+                "localhost"
+              ],
+              "port": "9093",
+              "path": [
+                "hotels"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "createHotel",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"name\" : \"Asansol Youth Devotees\",\r\n    \"location\" : \"Gavala Khatal\",\r\n    \"about\" : \"Best Residencial and Eating facilities\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "localhost:9093/hotels",
+              "host": [
+                "localhost"
+              ],
+              "port": "9093",
+              "path": [
+                "hotels"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "getHotelById",
+          "request": {
+            "method": "GET",
+            "header": []
+          },
+          "response": []
+        },
+        {
+          "name": "deleteHotelById",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "localhost:9093/hotels?hotelId=ac6ee015-8062-417e-b7ab-84b5b426b527",
+              "host": [
+                "localhost"
+              ],
+              "port": "9093",
+              "path": [
+                "hotels"
+              ],
+              "query": [
+                {
+                  "key": "hotelId",
+                  "value": "ac6ee015-8062-417e-b7ab-84b5b426b527"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "updateHotel",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "url": {
+              "raw": "localhost:9093/hotels?hotelId=ac6ee015-8062-417e-b7ab-84b5b426b527",
+              "host": [
+                "localhost"
+              ],
+              "port": "9093",
+              "path": [
+                "hotels"
+              ],
+              "query": [
+                {
+                  "key": "hotelId",
+                  "value": "ac6ee015-8062-417e-b7ab-84b5b426b527"
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "ratings",
+      "item": [
+        {
+          "name": "getRatings",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "localhost:9093/ratings",
+              "host": [
+                "localhost"
+              ],
+              "port": "9093",
+              "path": [
+                "ratings"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "getRatingById",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "localhost:9092/ratings?ratingId=44bafe35-41f3-4f1b-b967-96ce0043dc06",
+              "host": [
+                "localhost"
+              ],
+              "port": "9092",
+              "path": [
+                "ratings"
+              ],
+              "query": [
+                {
+                  "key": "ratingId",
+                  "value": "44bafe35-41f3-4f1b-b967-96ce0043dc06"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "createRating",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"userId\" : \"067a1414-dd98-4ab9-b11a-494cf5ff7b5d\",\r\n    \"hotelId\" : \"57e1f75b-e09b-4ada-9b38-6ac9e2d6836f\",\r\n    \"ratings\" : \"5\",\r\n    \"feedback\" : \"This is very nice facility for Devotees association\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "localhost:9092/ratings",
+              "host": [
+                "localhost"
+              ],
+              "port": "9092",
+              "path": [
+                "ratings"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "deleteByRatingId",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "localhost:9092/ratings?ratingId=44bafe35-41f3-4f1b-b967-96ce0043dc06",
+              "host": [
+                "localhost"
+              ],
+              "port": "9092",
+              "path": [
+                "ratings"
+              ],
+              "query": [
+                {
+                  "key": "ratingId",
+                  "value": "44bafe35-41f3-4f1b-b967-96ce0043dc06"
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "users",
+      "item": [
+        {
+          "name": "getUsers",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"name\" : \"Prabhupada\",\r\n    \"email\" : \"Prabhupada@Goloka.com\",\r\n    \"about\" : \"Pure Devotee of Krsna\"\r\n}"
+            },
+            "url": {
+              "raw": "localhost:9091/api/v1/users",
+              "host": [
+                "localhost"
+              ],
+              "port": "9091",
+              "path": [
+                "api",
+                "v1",
+                "users"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "createUser",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"name\" : \"Prabhupada\",\r\n    \"email\" : \"Prabhupada@Goloka.com\",\r\n    \"about\" : \"Pure Devotee of Krsna\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "localhost:9091/api/v1/users",
+              "host": [
+                "localhost"
+              ],
+              "port": "9091",
+              "path": [
+                "api",
+                "v1",
+                "users"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "getUserByEmail",
+          "request": {
+            "method": "GET",
+            "header": []
+          },
+          "response": []
+        },
+        {
+          "name": "getByUserId",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "localhost:9091/api/v1/users/070020af-4ccc-46d2-a976-af16a2bb86cd",
+              "host": [
+                "localhost"
+              ],
+              "port": "9091",
+              "path": [
+                "api",
+                "v1",
+                "users",
+                "070020af-4ccc-46d2-a976-af16a2bb86cd"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "deleteByUserId",
+          "request": {
+            "method": "GET",
+            "header": []
+          },
+          "response": []
+        },
+        {
+          "name": "updateUser",
+          "request": {
+            "method": "GET",
+            "header": []
+          },
+          "response": []
+        },
+        {
+          "name": "getUserByName",
+          "request": {
+            "method": "GET",
+            "header": []
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "API-Gateway",
+      "item": [
+        {
+          "name": "API-Gateway",
+          "request": {
+            "method": "GET",
+            "header": []
+          },
+          "response": []
+        },
+        {
+          "name": "fetch ratings details",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "localhost:9094/ratings/api/v1/ratings",
+              "host": [
+                "localhost"
+              ],
+              "port": "9094",
+              "path": [
+                "ratings",
+                "api",
+                "v1",
+                "ratings"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "fetch hotel details",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "localhost:9094/hotels/api/v1/hotels",
+              "host": [
+                "localhost"
+              ],
+              "port": "9094",
+              "path": [
+                "hotels",
+                "api",
+                "v1",
+                "hotels"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "fetch user details",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "localhost:9094/users/api/v1/users",
+              "host": [
+                "localhost"
+              ],
+              "port": "9094",
+              "path": [
+                "users",
+                "api",
+                "v1",
+                "users"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ]
+}

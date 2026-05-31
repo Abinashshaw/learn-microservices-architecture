@@ -1,0 +1,26 @@
+server:
+  port: 9092
+
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/micro_ratings
+    username: krsna
+    password: Krsna@108
+
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+      format_sql: true
+
+  application:
+    name: RATING-SERVICE
+
+eureka:
+  client:
+#    fetch-registry: true
+#    register-with-eureka: true
+    service-url:
+      defaultZone: ${EUREKA_DEFAULT_ZONE:http://localhost:8761/eureka/}
+  instance:
+    prefer-ip-address: true
