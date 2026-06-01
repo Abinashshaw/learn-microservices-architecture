@@ -30,16 +30,17 @@ public class ProjectConfig {
         RouteLocator myRoutes = builder.routes().
                 route( "user-route", r ->
                         r.path("/users/**")
-                                 .filters(f -> f.rewritePath("/users/?(?<remaining>.*)", "/${remaining}"))
-                                 .uri(userServiceId))
+                                 .filters(f -> f.circuitBreaker(c -> c.setName("UserCircuitBreaker").setFallbackUri("forward:/fallback-call"))
+                                         .rewritePath("/users/?(?<remaining>.*)", "/${remaining}"))
+                                 .uri("lb://"+userServiceId))
                     .route("hotel-route", r ->
                         r.path("/hotels/**")
-                                .filters(f -> f.rewritePath("/hotels/?(?<remaining>.*)", "/${remaining}"))
-                                .uri(hotelServiceId))
+                                .filters(f -> f.circuitBreaker(c -> c.setName("HotelCircuitBreaker").setFallbackUri("forward:/fallback-call")).rewritePath("/hotels/?(?<remaining>.*)", "/${remaining}"))
+                                .uri("lb://"+hotelServiceId))
                     .route("rating-route", r ->
                         r.path("/ratings/**")
-                                .filters(f -> f.rewritePath("/ratings/?(?<remaining>.*)", "/${remaining}"))
-                                .uri(ratingServiceId))
+                                .filters(f -> f.circuitBreaker(c -> c.setName("RatingCircuitBreaker").setFallbackUri("forward:/fallback-call")).rewritePath("/ratings/?(?<remaining>.*)", "/${remaining}"))
+                                .uri("lb://"+ratingServiceId))
                 .build();
 
         return myRoutes;

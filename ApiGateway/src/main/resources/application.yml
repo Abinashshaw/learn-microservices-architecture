@@ -34,13 +34,20 @@ management:
 
 hotel:
   service:
-    id: lb://HOTEL-SERVICE
+    id: HOTEL-SERVICE
 
 rating:
   service:
-    id: lb://RATING-SERVICE
+    id: RATING-SERVICE
 
 user:
   service:
-    id: lb://USER-SERVICE
+    id: USER-SERVICE
 
+resilience4j.circuitbreaker:
+  configs:
+    default:
+      slidingWindowSize: 10
+      waitDurationInOpenState: 10000
+      permittedNumberOfCallsInHalfOpenState: 2
+      failureRateThreshold: 50

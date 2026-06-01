@@ -10,6 +10,7 @@ import com.Krsna.UserService.repository.UserRepository;
 import com.Krsna.UserService.services.UserService;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
 import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -90,7 +91,9 @@ public class UserServiceImpl implements UserService {
         if(response.getStatusCode().is2xxSuccessful()){
             log.info("Ratings found with user id: {} is {}", userId, response);
             ratings = response.getBody();
-        }else{
+        } else if (response.getStatusCode().is5xxServerError()) {
+            log.error("Rating Service is Down. Got response {}", response);
+        } else{
             log.error("Ratings not found with user id: {}", userId);
         }
         return ratings;
@@ -102,6 +105,10 @@ public class UserServiceImpl implements UserService {
         ResponseEntity<Hotel> response = hotelService.getHotelByHotelId(hotelId);
         if (response.getStatusCode().is2xxSuccessful()){
             log.info("Hotel found with id: {} is {}", hotelId, response);
+        } else if (response.getStatusCode().is5xxServerError()) {
+            log.error("Hotel Service is Down got response {}",response);
+        } else {
+            log.error("Hotel not found with id: {} ", hotelId);
         }
         return response.getBody();
     }

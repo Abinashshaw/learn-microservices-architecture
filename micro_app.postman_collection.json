@@ -16,12 +16,14 @@
             "method": "GET",
             "header": [],
             "url": {
-              "raw": "localhost:9093/hotels",
+              "raw": "localhost:9093/api/v1/hotels",
               "host": [
                 "localhost"
               ],
               "port": "9093",
               "path": [
+                "api",
+                "v1",
                 "hotels"
               ]
             }
@@ -43,12 +45,14 @@
               }
             },
             "url": {
-              "raw": "localhost:9093/hotels",
+              "raw": "localhost:9093/api/v1/hotels",
               "host": [
                 "localhost"
               ],
               "port": "9093",
               "path": [
+                "api",
+                "v1",
                 "hotels"
               ]
             }
@@ -59,29 +63,43 @@
           "name": "getHotelById",
           "request": {
             "method": "GET",
-            "header": []
+            "header": [],
+            "url": {
+              "raw": "localhost:9093/api/v1/hotels/ac6ee015-8062-417e-b7ab-84b5b426b527",
+              "host": [
+                "localhost"
+              ],
+              "port": "9093",
+              "path": [
+                "api",
+                "v1",
+                "hotels",
+                "ac6ee015-8062-417e-b7ab-84b5b426b527"
+              ]
+            }
           },
           "response": []
         },
         {
           "name": "deleteHotelById",
           "request": {
-            "method": "DELETE",
+            "method": "PUT",
             "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"name\" : \"Asansol Youth Devotees\",\r\n    \"location\" : \"Gavala Khatal\",\r\n    \"about\" : \"Best Residencial and Eating facilities\"\r\n}"
+            },
             "url": {
-              "raw": "localhost:9093/hotels?hotelId=ac6ee015-8062-417e-b7ab-84b5b426b527",
+              "raw": "localhost:9093/api/v1/hotels/ac6ee015-8062-417e-b7ab-84b5b426b527",
               "host": [
                 "localhost"
               ],
               "port": "9093",
               "path": [
-                "hotels"
-              ],
-              "query": [
-                {
-                  "key": "hotelId",
-                  "value": "ac6ee015-8062-417e-b7ab-84b5b426b527"
-                }
+                "api",
+                "v1",
+                "hotels",
+                "ac6ee015-8062-417e-b7ab-84b5b426b527"
               ]
             }
           },
@@ -92,20 +110,26 @@
           "request": {
             "method": "PUT",
             "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"name\" : \"Asansol Youth Devotees\",\r\n    \"location\" : \"Gavala Khatal\",\r\n    \"about\" : \"Best Residencial and Eating facilities\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
             "url": {
-              "raw": "localhost:9093/hotels?hotelId=ac6ee015-8062-417e-b7ab-84b5b426b527",
+              "raw": "localhost:9093/api/v1/hotels/ac6ee015-8062-417e-b7ab-84b5b426b527",
               "host": [
                 "localhost"
               ],
               "port": "9093",
               "path": [
-                "hotels"
-              ],
-              "query": [
-                {
-                  "key": "hotelId",
-                  "value": "ac6ee015-8062-417e-b7ab-84b5b426b527"
-                }
+                "api",
+                "v1",
+                "hotels",
+                "ac6ee015-8062-417e-b7ab-84b5b426b527"
               ]
             }
           },
@@ -122,12 +146,14 @@
             "method": "GET",
             "header": [],
             "url": {
-              "raw": "localhost:9093/ratings",
+              "raw": "localhost:9092/api/v1/ratings",
               "host": [
                 "localhost"
               ],
-              "port": "9093",
+              "port": "9092",
               "path": [
+                "api",
+                "v1",
                 "ratings"
               ]
             }
@@ -140,19 +166,16 @@
             "method": "GET",
             "header": [],
             "url": {
-              "raw": "localhost:9092/ratings?ratingId=44bafe35-41f3-4f1b-b967-96ce0043dc06",
+              "raw": "localhost:9092/api/v1/ratings/067a1414-dd98-4ab9-b11a-494cf5ff7b5d",
               "host": [
                 "localhost"
               ],
               "port": "9092",
               "path": [
-                "ratings"
-              ],
-              "query": [
-                {
-                  "key": "ratingId",
-                  "value": "44bafe35-41f3-4f1b-b967-96ce0043dc06"
-                }
+                "api",
+                "v1",
+                "ratings",
+                "067a1414-dd98-4ab9-b11a-494cf5ff7b5d"
               ]
             }
           },
@@ -173,12 +196,14 @@
               }
             },
             "url": {
-              "raw": "localhost:9092/ratings",
+              "raw": "localhost:9092/api/v1/ratings",
               "host": [
                 "localhost"
               ],
               "port": "9092",
               "path": [
+                "api",
+                "v1",
                 "ratings"
               ]
             }
@@ -191,19 +216,16 @@
             "method": "DELETE",
             "header": [],
             "url": {
-              "raw": "localhost:9092/ratings?ratingId=44bafe35-41f3-4f1b-b967-96ce0043dc06",
+              "raw": "localhost:9092/api/v1/ratings/44bafe35-41f3-4f1b-b967-96ce0043dc06",
               "host": [
                 "localhost"
               ],
               "port": "9092",
               "path": [
-                "ratings"
-              ],
-              "query": [
-                {
-                  "key": "ratingId",
-                  "value": "44bafe35-41f3-4f1b-b967-96ce0043dc06"
-                }
+                "api",
+                "v1",
+                "ratings",
+                "44bafe35-41f3-4f1b-b967-96ce0043dc06"
               ]
             }
           },
@@ -272,9 +294,30 @@
         },
         {
           "name": "getUserByEmail",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "method": "GET",
-            "header": []
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"name\" : \"Prabhupada\",\r\n    \"email\" : \"Prabhupada@Goloka.com\",\r\n    \"about\" : \"Pure Devotee of Krsna\"\r\n}"
+            },
+            "url": {
+              "raw": "localhost:9091/api/v1/users/email/prabhupada@goloka.com",
+              "host": [
+                "localhost"
+              ],
+              "port": "9091",
+              "path": [
+                "api",
+                "v1",
+                "users",
+                "email",
+                "prabhupada@goloka.com"
+              ]
+            }
           },
           "response": []
         },
@@ -302,24 +345,80 @@
         {
           "name": "deleteByUserId",
           "request": {
-            "method": "GET",
-            "header": []
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "localhost:9091/api/v1/users/070020af-4ccc-46d2-a976-af16a2bb86cd",
+              "host": [
+                "localhost"
+              ],
+              "port": "9091",
+              "path": [
+                "api",
+                "v1",
+                "users",
+                "070020af-4ccc-46d2-a976-af16a2bb86cd"
+              ]
+            }
           },
           "response": []
         },
         {
           "name": "updateUser",
           "request": {
-            "method": "GET",
-            "header": []
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"name\" : \"Prabhupada\",\r\n    \"email\" : \"Prabhupada@Goloka.com\",\r\n    \"about\" : \"Pure Devotee of Krsna\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "localhost:9091/api/v1/users/070020af-4ccc-46d2-a976-af16a2bb86cd",
+              "host": [
+                "localhost"
+              ],
+              "port": "9091",
+              "path": [
+                "api",
+                "v1",
+                "users",
+                "070020af-4ccc-46d2-a976-af16a2bb86cd"
+              ]
+            }
           },
           "response": []
         },
         {
           "name": "getUserByName",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "method": "GET",
-            "header": []
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"name\" : \"Prabhupada\",\r\n    \"email\" : \"Prabhupada@Goloka.com\",\r\n    \"about\" : \"Pure Devotee of Krsna\"\r\n}"
+            },
+            "url": {
+              "raw": "localhost:9091/api/v1/users/name/Prabhupada",
+              "host": [
+                "localhost"
+              ],
+              "port": "9091",
+              "path": [
+                "api",
+                "v1",
+                "users",
+                "name",
+                "Prabhupada"
+              ]
+            }
           },
           "response": []
         }
@@ -332,7 +431,20 @@
           "name": "API-Gateway",
           "request": {
             "method": "GET",
-            "header": []
+            "header": [],
+            "url": {
+              "raw": "localhost:9094/users/api/v1/users",
+              "host": [
+                "localhost"
+              ],
+              "port": "9094",
+              "path": [
+                "users",
+                "api",
+                "v1",
+                "users"
+              ]
+            }
           },
           "response": []
         },
