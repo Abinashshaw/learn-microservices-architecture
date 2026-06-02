@@ -1,7 +1,15 @@
 server:
-  port: 9094
+  port: 9096
 
 spring:
+  data:
+    redis:
+      host: localhost
+      port: 6379
+      timeout: 60000
+  logging:
+    level:
+      root: DEBUG
   application:
     name: API-GATEWAY
 
